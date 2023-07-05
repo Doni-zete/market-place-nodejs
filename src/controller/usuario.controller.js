@@ -68,7 +68,7 @@ const addUserAddressController = async (req, res) => {
   }
 };
 
-const addUserFavProduct = async (req, res) => {
+const addUserFavProductController = async (req, res) => {
   try {
   } catch (err) {
     console.log(`erro: ${err.message}`);
@@ -78,7 +78,7 @@ const addUserFavProduct = async (req, res) => {
   }
 };
 
-const removeUserFavProduct = async (req, res) => {
+const removeUserFavProductController = async (req, res) => {
   try {
   } catch (err) {
     console.log(`erro: ${err.message}`);
@@ -96,6 +96,6 @@ module.exports = {
   updateUserController,
   addUserAddressController,
   removeUserAddressController,
-  addUserFavProduct,
-  removeUserFavProduct,
+  addUserFavProductController,
+  removeUserFavProductController,
 };

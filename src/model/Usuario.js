@@ -11,10 +11,10 @@ const UsuarioSchema = new mongoose.Schema({
       numero: { type: String, required: true },
       complemento: { type: String, required: true },
       CEP: { type: String, required: true },
-      creadAt: { type: Date, required: true },
+      createdAt: { type: Date, required: true },
     },
   ],
-  creadAt: { type: Date, required: true },
+  creadAt: { type: Date, required: true,default:Date.now()  },
   produtos_fav: [
     {
       _id: {

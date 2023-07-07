@@ -5,7 +5,7 @@ function connectToDatabase(){
         useNewUrlParser: true,
         useUnifiedTopology:true,
     }).then(()=>{
-        console.log("Mongo Db conectado")
+        console.log("Mongo DB conectado")
     }).catch((err)=>{
         return console.log(`Erro na conexao com o banco: ${err}`)
     })

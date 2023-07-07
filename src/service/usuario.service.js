@@ -40,4 +40,6 @@ module.exports = {
   removeUserAddressService,
   addUserAddressService,
   removeUserAddressService,
+  addUserFavProductService,
+  removeUserFavProductService
 };

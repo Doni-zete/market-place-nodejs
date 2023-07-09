@@ -32,16 +32,16 @@ UsuarioSchema.pre("save", async function (next) {
   next();
 });
 
-// UsuarioSchema.pre("findOneAndUpdate", async function (next) {
-//   if(this._update.senha){
-//     const docToUpdate = await this.model.findOne(this.getQuery());
-//     if (docToUpdate.senha !== this._update.senha) {
-//       const newPassword = await bcrypt.hash(this._update.senha, 10)
-//       this._update.senha = newPassword
-//     }
-//   }
-//   next();
-// });
+UsuarioSchema.pre("findOneAndUpdate", async function (next) {
+  if(this._update.senha){
+    const docToUpdate = await this.model.findOne(this.getQuery());
+    if (docToUpdate.senha !== this._update.senha) {
+      const newPassword = await bcrypt.hash(this._update.senha, 10)
+      this._update.senha = newPassword
+    }
+  }
+  next();
+});
 
 const Usuario = mongoose.model("Usuarios", UsuarioSchema);
 

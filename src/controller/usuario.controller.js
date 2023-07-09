@@ -3,12 +3,15 @@ const userService = require("../service/usuario.service");
 const findUserByIdController = async (req, res) => {
   try {
     const user = await userService.findUserByIdService(req.params.id);
+
+    console.log(user);
+
     if (!user) {
-      return res
+      res
         .status(404)
-        .send({ message: `USuario não encontrado, tente novamente` });
+        .send({ message: `Usuario não encontrado, tente novamente` });
     }
-    return res.status(200).send();
+    res.status(200).send(user);
   } catch (err) {
     if (err.kind == "ObjectId") {
       console.log(err.kind == "ObjectId");
@@ -91,6 +94,12 @@ const removeUserController = async (req, res) => {
 
 const removeUserAddressController = async (req, res) => {
   try {
+     const endereco = await userService.removeUserAddressService(req.body.id, req.body.addressId)
+     if (endereco.ok == 1) {
+      res.status(200).send({ message: "Endereco removido com sucesso" });
+    } else {
+      res.status(400).send({ message: "Algo deu errado no endereço, tente novamente!!" });
+    }
   } catch (err) {
     console.log(`erro: ${err.message}`);
     return res
@@ -101,11 +110,23 @@ const removeUserAddressController = async (req, res) => {
 
 const addUserAddressController = async (req, res) => {
   try {
+   
+    req.body.createdAt = new Date();
+    const endereco = await userService.addUserAddressService(
+      req.params.id,
+      req.body
+    );
+
+    if (endereco.ok == 1) {
+      res.status(200).send({ message: "endereco adicionado com sucesso" });
+    } else {
+      res.status(400).send({ message: "algo deu errado, tente novamente" });
+    }
   } catch (err) {
-    console.log(`erro: ${err.message}`);
-    return res
+    res
       .status(500)
-      .send({ message: `Erro inesperado tente novamente!` });
+      .send({ message: "Erro inesperado, tente novamente mais tarde" });
+    console.log(err.message);
   }
 };
 

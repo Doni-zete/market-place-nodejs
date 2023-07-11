@@ -2,7 +2,7 @@ const categoriaService = require("../service/categoria.service");
 
 const findCategoriaByIdController = async (req, res) => {
   try {
-    res.status(200).send(await categoriaService.findCategoriaByIdSevice(req.params.id));
+    return res.status(200).send(await categoriaService.findCategoriaByIdService(req.params.id));
   } catch(err) {
     console.log(`erro: ${err.message}`);
     return res

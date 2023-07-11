@@ -17,7 +17,7 @@ const updateCategoriaService = (id, body) => {
 };
 
 const deleteCategoriaService = (id) => {
-  return categoria.findByIdAndRemove(id);
+  return Categoria.findByIdAndRemove(id);
 };
 
 module.exports = {

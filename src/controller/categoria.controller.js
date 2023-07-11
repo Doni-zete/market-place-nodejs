@@ -2,8 +2,10 @@ const categoriaService = require("../service/categoria.service");
 
 const findCategoriaByIdController = async (req, res) => {
   try {
-    return res.status(200).send(await categoriaService.findCategoriaByIdService(req.params.id));
-  } catch(err) {
+    return res
+      .status(200)
+      .send(await categoriaService.findCategoriaByIdService(req.params.id));
+  } catch (err) {
     console.log(`erro: ${err.message}`);
     return res
       .status(500)
@@ -14,7 +16,7 @@ const findCategoriaByIdController = async (req, res) => {
 const findAllCategoriaController = async (req, res) => {
   try {
     res.status(200).send(await categoriaService.findAllCategoriaService());
-  } catch(err) {
+  } catch (err) {
     console.log(`erro: ${err.message}`);
     return res
       .status(500)
@@ -24,13 +26,10 @@ const findAllCategoriaController = async (req, res) => {
 
 const createCategoriaController = async (req, res) => {
   try {
-    const corpo = {
-      ...req.body,
-      userId: req.userId,
-      createdAt: new Date(),
-    };
-    res.status(201).send(await categoriaService.createCategoriaService(corpo));
-  } catch(err) {
+    res
+      .status(201)
+      .send(await categoriaService.createCategoriaService(req.body));
+  } catch (err) {
     console.log(`erro: ${err.message}`);
     return res
       .status(500)
@@ -40,10 +39,12 @@ const createCategoriaController = async (req, res) => {
 
 const updateCategoriaController = async (req, res) => {
   try {
-    res.status(200).send(
-      await categoriaService.updateCategoriaService(req.params.id, req.body)
-    );
-  } catch (err){
+    res
+      .status(200)
+      .send(
+        await categoriaService.updateCategoriaService(req.params.id, req.body)
+      );
+  } catch (err) {
     console.log(`erro: ${err.message}`);
     return res
       .status(500)
@@ -53,8 +54,10 @@ const updateCategoriaController = async (req, res) => {
 
 const deleteCategoriaController = async (req, res) => {
   try {
-    res.status(200).send(await categoriaService.deleteCategoriaService(req.params.id));
-  } catch(err) {
+    res
+      .status(200)
+      .send(await categoriaService.deleteCategoriaService(req.params.id));
+  } catch (err) {
     console.log(`erro: ${err.message}`);
     return res
       .status(500)

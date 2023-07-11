@@ -1,22 +1,21 @@
-
 const express = require("express");
 require("dotenv").config();
-const connectToDatabase = require("./src/database/database");//arquivo de conexao com o banco
+const connectToDatabase = require("./src/database/database"); //arquivo de conexao com o banco
 // importando a rotas
-const usuario = require("./src/router/usuario.router")//arquivo de rota do usuario
-const auth = require("./src/router/auth.router")//arquivo de rota do usuario
-
+const usuario = require("./src/router/usuario.router"); //arquivo de rota do usuario
+const produto = require("./src/router/produto.router"); //arquivo de rota do produto
+const auth = require("./src/router/auth.router"); //arquivo de rota do usuario
 
 const app = express();
 const port = 3000;
 
 app.use(express.json());
 
-app.use("/usuario", usuario)//chamando as rotas usuario
-app.use("/auth", auth) //chamando as rotas auth
+app.use("/usuario", usuario); //chamando as rotas usuario
+app.use("/produto", produto); //chamando as rotas usuario
+app.use("/auth", auth); //chamando as rotas auth
 
-
-connectToDatabase() //conectadno com o banco
+connectToDatabase(); //conectadno com o banco
 
 app.get("/", (req, res) => {
   res.send({

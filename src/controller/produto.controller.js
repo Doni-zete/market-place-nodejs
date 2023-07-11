@@ -62,20 +62,21 @@ const deleteProductController = async (req, res) => {
 };
 
 const addCategoriaProdutoController = async (req, res) => {
-  try {
-    const categoria = await produtoService.addCategoriaProdutoService(
-      req.params.id,
-      req.body
-    );
+  try{
+    req.body.createdAt = new Date();
+    const categoria = await produtoService.addCategoriaProdutoService(req.params.id,req.body);
 
-    res.status(200).send(categoria);
+    if(categoria.ok == 1 && categoria.value != null){
+      res.status(200).send({ message: 'categoria adicionada com sucesso' });  
+    }else{
+      res.status(400).send({ message: 'algo deu errado, tente novamente' });  
+    }
+   
   } catch (err) {
-    console.log(`erro: ${err.message}`);
-    return res
-      .status(500)
-      .send({ message: `Erro inesperado, tente novamente!` });
+    res.status(500).send({ message: "Erro inesperado, tente novamente mais tarde"});
+    console.log(err.message);
   }
-};
+}
 
 const removeCategoriaProdutoController = async (req, res) => {
   try {

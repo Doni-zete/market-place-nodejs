@@ -1,4 +1,4 @@
-const Categoria = require("../model/Categoria");
+// const Categoria = require("../model/Categoria");
 const Produto = require("../model/Produto");
 
 const findProductByIdSevice = (id) => {
@@ -28,7 +28,7 @@ const addCategoriaProdutoService = (id, categoria) => {
     },
     {
       $push: {
-        categoria: {
+        categorias: {
           _id: categoria._id,
           createdAt: categoria.createdAt,
         },
@@ -39,7 +39,6 @@ const addCategoriaProdutoService = (id, categoria) => {
     }
   );
 };
-
 const removeCategoriaProdutoService = (id, categoria) => {
   return Produto.findOneAndUpdate(
     {
@@ -47,7 +46,7 @@ const removeCategoriaProdutoService = (id, categoria) => {
     },
     {
       $pull: {
-        categoria: { _id: categoria._id },
+        categorias: { _id: categoria._id },
       },
     },
     {

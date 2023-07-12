@@ -6,6 +6,8 @@ const usuario = require("./src/router/usuario.router"); //arquivo de rota do usu
 const produto = require("./src/router/produto.router"); //arquivo de rota do produto
 const categoria = require("./src/router/categoria.router"); //arquivo de rota do categoria
 const carrinho = require("./src/router/carrinho.router"); //arquivo de rota do carrinho
+const pedido = require("./src/router/pedido.router"); //arquivo de rota do pedido
+
 
 const auth = require("./src/router/auth.router"); //arquivo de rota do usuario
 
@@ -18,7 +20,9 @@ app.use(express.json());
 app.use("/usuario", usuario); //chamando as rotas usuario
 app.use("/produto", produto); //chamando as rotas produto
 app.use("/categoria", categoria); //chamando as rotas categoria
-app.use("/carrinho", carrinho); //chamando as rotas carrinho
+app.use("/carrinho", carrinho); //chamando as rotas pedido
+app.use("/pedido", pedido); //chamando as rotas pedido
+
 
 app.use("/auth", auth); //chamando as rotas auth
 

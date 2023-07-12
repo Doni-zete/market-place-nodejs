@@ -94,20 +94,24 @@ const removeUserController = async (req, res) => {
 
 const removeUserAddressController = async (req, res) => {
   try {
-     const endereco = await userService.removeUserAddressService(req.body.id, req.body.addressId)
+    const endereco = await userService.removeUserAddressService(
+      req.body.id,
+      req.body.addressId
+    );
     let found = false;
 
-    endereco.value.enderecos.map((valor, chave) =>{
-      if(valor._id == req.body.addressId){
+    endereco.value.enderecos.map((valor, chave) => {
+      if (valor._id == req.body.addressId) {
         found = true;
       }
-    })
+    });
 
-
-     if (found) {
+    if (found) {
       res.status(200).send({ message: "Endereco removido com sucesso" });
     } else {
-      res.status(400).send({ message: "Algo deu errado no endereço, tente novamente!!" });
+      res
+        .status(400)
+        .send({ message: "Algo deu errado no endereço, tente novamente!!" });
     }
   } catch (err) {
     console.log(`erro: ${err.message}`);
@@ -119,16 +123,11 @@ const removeUserAddressController = async (req, res) => {
 
 const addUserAddressController = async (req, res) => {
   try {
-    const endereco = await userService.addUserAddressService(
-      req.params.id,
-      req.body
-    );
-
-    if (endereco.ok == 1) {
-      res.status(201).send({ message: "endereco adicionado com sucesso" });
-    } else {
-      res.status(400).send({ message: "algo deu errado, tente novamente" });
-    }
+    res
+      .status(201)
+      .send(
+        await userService.addUserAddressService(req.params.id, req.body)
+      );
   } catch (err) {
     res
       .status(500)
@@ -139,6 +138,11 @@ const addUserAddressController = async (req, res) => {
 
 const addUserFavProductController = async (req, res) => {
   try {
+    res
+      .status(201)
+      .send(
+        await userService.addUserFavProductService(req.params.id, req.body)
+      );
   } catch (err) {
     console.log(`erro: ${err.message}`);
     return res
@@ -149,6 +153,11 @@ const addUserFavProductController = async (req, res) => {
 
 const removeUserFavProductController = async (req, res) => {
   try {
+    res
+      .status(201)
+      .send(
+        await userService.removeUserFavProductService(req.params.id, req.body)
+      );
   } catch (err) {
     console.log(`erro: ${err.message}`);
     return res

@@ -49,7 +49,7 @@ const removeCategoriaProdutoService = (id, categoria) => {
         categorias: { _id: categoria._id },
       },
     },
-    {
+    { 
       rawResult: true,
     }
   );

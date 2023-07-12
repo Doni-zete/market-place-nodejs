@@ -63,7 +63,6 @@ const deleteProductController = async (req, res) => {
 
 const addCategoriaProdutoController = async (req, res) => {
   try{
-    req.body.createdAt = new Date();
     const categoria = await produtoService.addCategoriaProdutoService(req.params.id,req.body);
 
     if(categoria.ok == 1 && categoria.value != null){

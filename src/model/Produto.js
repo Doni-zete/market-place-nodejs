@@ -8,8 +8,13 @@ const ProdutoSchema = new mongoose.Schema({
   codigoBarra: { type: Number, required: true },
   categorias: [
     {
-      _id:{ type: mongoose.Schema.Types.ObjectId, required: true, unique: true, ref: "categorias"},
-      createdAt:{ type: Date, required: true}
+      _id: {
+        type: mongoose.Schema.Types.ObjectId,
+        required: true,
+        unique: true,
+        ref: "categorias",
+      },
+      createdAt: { type: Date, required: true, default: Date.now() },
     },
   ],
 });

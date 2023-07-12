@@ -5,7 +5,7 @@ const findCarrinhoByIdService = (id) => {
 };
 
 const findAllCarrinhoService = () => {
-  return Carrinho.find(id);
+  return Carrinho.find();
 };
 
 const createCarrinhoService = (body) => {

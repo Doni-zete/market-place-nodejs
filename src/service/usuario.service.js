@@ -34,7 +34,7 @@ const addUserAddressService = (id, endereco) => {
       rawResult: true,
     }
   );
-}
+};
 
 const removeUserAddressService = (id, addressId) => {
   return Usuario.findOneAndUpdate(
@@ -52,8 +52,8 @@ const removeUserAddressService = (id, addressId) => {
   );
 };
 
-const addUserFavProductService = (id, produto) => {
-  return Usuario.findOneAndUpdate(
+const addUserFavProductService = (id, produto) =>
+  Usuario.findOneAndUpdate(
     {
       _id: id,
     },
@@ -61,6 +61,7 @@ const addUserFavProductService = (id, produto) => {
       $push: {
         produtos_fav: {
           _id: produto._id,
+          createdAt: produto.createdAt,
         },
       },
     },
@@ -68,10 +69,9 @@ const addUserFavProductService = (id, produto) => {
       rawResult: true,
     }
   );
-};
 
-const removeUserFavProductService = (id, produto) => {
-  return Usuario.findOneAndUpdate(
+const removeUserFavProductService = (id, produto) =>
+  Usuario.findOneAndUpdate(
     {
       _id: id,
     },
@@ -86,7 +86,6 @@ const removeUserFavProductService = (id, produto) => {
       rawResult: true,
     }
   );
-};
 
 module.exports = {
   findUserByIdService,

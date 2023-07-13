@@ -1,0 +1,130 @@
+const validaUsuario = (req, res, next) => {
+  if (!req.body.nome) {
+    console.log(typeof nome);
+    return res
+      .status(400)
+      .send({ message: `O campo 'nome' precisa ser preenchido!` });
+  }
+  if (!req.body.email) {
+    return res
+      .status(400)
+      .send({ message: `O campo 'email' precisa ser preenchido!` });
+  }
+  if (!req.body.senha) {
+    return res
+      .status(400)
+      .send({ message: `O campo 'senha' precisa ser preenchido!` });
+  }
+  if (!req.body.imagem) {
+    return res
+      .status(400)
+      .send({ message: `O campo 'imagem' precisa ser preenchido!` });
+  }
+  if (!req.body.admin) {
+    return res
+      .status(400)
+      .send({ message: `O campo 'admin' precisa ser preenchido!` });
+  }
+
+  return next();
+};
+
+const validaEndereco = (req, res, next) => {
+  if (!req.body.rua) {
+    return res.status(400).send({ message: "O campo rua deve ser preenchido" });
+  }
+  if (!req.body.numero) {
+    return res
+      .status(400)
+      .send({ message: "O campo numero deve ser preenchido" });
+  }
+  if (!req.body.CEP) {
+    return res.status(400).send({ message: "O campo CEP deve ser preenchido" });
+  }
+  return next();
+};
+
+const validaProduto = (req, res, next) => {
+  let erros = [];
+  if (!req.body.nome) {
+    erros.push("nome");
+  }
+  if (!req.body.descricao) {
+    erros.push("descricao");
+  }
+  if (!req.body.precoUni) {
+    erros.push("precoUni");
+  }
+  if (!req.body.imagem) {
+    erros.push("imagem");
+  }
+  if (!req.body.codigoBarra) {
+    erros.push("codigoBarra");
+  }
+
+  if (erros.length == 0) {
+    return next();
+  } else {
+    if (erros.length > 1) {
+      return res
+        .status(400)
+        .send({ message: `Os campos ${erros}, devem ser preenchido!` });
+    } else {
+      return res
+        .status(400)
+        .send({ message: `O campo ${erros}, deve ser preenchido!` });
+    }
+  }
+};
+
+const validaPedido = (req, res, next) => {
+  let campos = "";
+
+  if (!req.body.precoTotal) {
+    campos += "precoTotal ";
+  }
+  if (!req.body.frete) {
+    campos += "frete ";
+  }
+
+  if (campos != "") {
+    return res
+      .status(400)
+      .send({ message: `O(s) campo(s) ${campos}, deve(m) ser preenchido(s)` });
+  }
+
+  return next();
+};
+const validaCategoria = (req, res, next) => {
+  if (!req.body.nome) {
+    return res
+      .status(400)
+      .send({ message: "O campo nome deve ser preenchido" });
+  }
+
+  return next();
+};
+
+const validaCarrinho = (req, res, next) => {
+  if (!req.body.precoTotal) {
+    return res
+      .status(400)
+      .send({ message: "O campo precoTotal deve ser preenchido" });
+  }
+  if (!req.body.frete) {
+    return res
+      .status(400)
+      .send({ message: "O campo frete deve ser preenchido" });
+  }
+
+  return next();
+};
+
+module.exports = {
+  validaUsuario,
+  validaEndereco,
+  validaProduto,
+  validaPedido,
+  validaCategoria,
+  validaCarrinho,
+};

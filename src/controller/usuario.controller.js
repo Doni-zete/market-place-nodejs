@@ -39,21 +39,18 @@ const findAllUsersController = async (req, res) => {
 
 const createUserController = async (req, res) => {
   try {
-    const body = req.body;
-    if (!body.nome) {
-      return res
-        .status(400)
-        .send({ message: `O campo 'nome' precisa ser preenchido!` });
-    }
-    return res.status(201).send(await userService.createUserService(body));
+    const corpo = {
+      ...req.body,
+      createdAt: new Date(),
+    };
+    res.send(await userService.createUserService(corpo));
   } catch (err) {
-    console.log(`erro: ${err.message}`);
-    return res
+    res
       .status(500)
-      .send({ message: `Erro inesperado tente novamente!` });
+      .send({ message: "Erro inesperado, tente novamente mais tarde" });
+    console.log(err.message);
   }
 };
-
 const updateUserController = async (req, res) => {
   try {
     const body = req.body;
@@ -125,9 +122,7 @@ const addUserAddressController = async (req, res) => {
   try {
     res
       .status(201)
-      .send(
-        await userService.addUserAddressService(req.params.id, req.body)
-      );
+      .send(await userService.addUserAddressService(req.params.id, req.body));
   } catch (err) {
     res
       .status(500)

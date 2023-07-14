@@ -13,7 +13,7 @@ const findPedidoByIdController = async (req, res) => {
 
 const findAllPedidoController = async (req, res) => {
   try {
-    res.send(await pedidoService.findAllPedidosService());
+    res.send(await pedidoService.findAllPedidosService(req.query.limit, req.query.offset));
   } catch (err) {
     console.log(`erro: ${err.message}`);
     return res

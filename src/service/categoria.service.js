@@ -1,8 +1,8 @@
 const Categoria = require("../model/Categoria");
 
 
-const findAllCategoriaService = async () => {
-  return await Categoria.find();
+const findAllCategoriaService =  (limit,offset) => {
+  return  Categoria.find().limit(limit).skip(offset);
 };
 
 const findCategoriaByIdService = async (id) => {

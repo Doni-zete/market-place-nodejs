@@ -5,8 +5,8 @@ const findProductByIdSevice = (id) => {
   return Produto.findById(id);
 };
 
-const findAllProductsService = () => {
-  return Produto.find();
+const findAllProductsService = (limit, offset) => {
+  return Produto.find().limit(limit).skip(offset);
 };
 
 const createProductService = (body) => {
@@ -49,7 +49,7 @@ const removeCategoriaProdutoService = (id, categoria) => {
         categorias: { _id: categoria._id },
       },
     },
-    { 
+    {
       rawResult: true,
     }
   );

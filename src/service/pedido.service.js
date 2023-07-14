@@ -1,7 +1,7 @@
 const Pedido = require("../model/Pedido");
 
-const findAllPedidosService = () => {
-  return Pedido.find();
+const findAllPedidosService = (limit,offset) => {
+  return Pedido.find().limit(limit).skip(offset);
 };
 
 const findPedidoByIdService = (id) => {

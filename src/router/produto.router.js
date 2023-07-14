@@ -2,17 +2,17 @@ const router = require("express").Router();
 
 const produtoController = require("../controller/produto.controller");
 const authMiddleware = require("../middleware/auth.middleware")
-const {validaProduto} = require("../middleware/validacao.middlewate")
+const {validaProduto,validaId} = require("../middleware/validacao.middlewate")
 
-router.get("/find/:id", authMiddleware, produtoController.findProductByIdController)
+router.get("/find/:id", authMiddleware,validaId, produtoController.findProductByIdController)
 router.get("/findAll", authMiddleware, produtoController.findAllProductController)
 
 router.post("/create", authMiddleware, validaProduto,produtoController.createProductController)
-router.post("/addCategoria/:id", authMiddleware, produtoController.addCategoriaProdutoController)
+router.post("/addCategoria/:id", authMiddleware, validaId,produtoController.addCategoriaProdutoController)
 
-router.put("/update/:id", authMiddleware,validaProduto, produtoController.updateProductController)
-router.delete("/delete/:id", authMiddleware, produtoController.deleteProductController)
-router.delete("/removeCategoria/:id", authMiddleware, produtoController.removeCategoriaProdutoController)
+router.put("/update/:id", authMiddleware,validaId,validaProduto, produtoController.updateProductController)
+router.delete("/delete/:id", authMiddleware,validaId, produtoController.deleteProductController)
+router.delete("/removeCategoria/:id", authMiddleware,validaId, produtoController.removeCategoriaProdutoController)
 
 
 module.exports = router;

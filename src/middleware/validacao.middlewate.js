@@ -1,4 +1,4 @@
-const ObjectId = require("mongoose").Types.ObjectId
+const ObjectId = require("mongoose").Types.ObjectId;
 
 const validaUsuario = (req, res, next) => {
   if (!req.body.nome) {
@@ -143,15 +143,40 @@ const validaCarrinho = (req, res, next) => {
   }
 };
 
-
-const validaId =(req, res, next) =>{
-  if(ObjectId.isValid(req.params.id)){
+const validaId = (req, res, next) => {
+  if (ObjectId.isValid(req.params.id)) {
     return next();
-  }else{
-    return res.status(400).send({message:`O ID não corresponde aos padroes necessarios`})
+  } else {
+    return res
+      .status(400)
+      .send({ message: `O ID não corresponde aos padroes necessarios` });
+  }
+};
+
+const validaLogin = (req, res, next) => {
+  let erros = [];
+
+  if (!req.body.email) {
+    erros.push("email");
+  }
+  if (!req.body.senha) {
+    erros.push("senha");
   }
 
-}
+
+  if (erros.length == 0) {
+    return next();
+  } else {
+    if (erros.length > 1) {
+      return res
+        .status(400)
+        .send({ message: `Os campos ${erros}, devem ser preenchido!` });
+    }
+    return res
+      .status(400)
+      .send({ message: `O campo ${erros}, deve ser preenchido!` });
+  }
+};
 
 module.exports = {
   validaUsuario,
@@ -160,5 +185,5 @@ module.exports = {
   validaPedido,
   validaCategoria,
   validaCarrinho,
-  validaId
+  validaId, validaLogin
 };

@@ -1,7 +1,7 @@
 {
     "client": "Thunder Client",
     "collectionName": "Market-Place",
-    "dateExported": "2023-07-13T11:55:40.678Z",
+    "dateExported": "2023-07-16T22:41:23.875Z",
     "version": "1.1",
     "folders": [
         {
@@ -71,13 +71,24 @@
             "colId": "8817f997-95ea-42a6-89b5-d4246ae46f02",
             "containerId": "326f8fb9-6af0-4937-b16b-953e13d54f07",
             "name": "FindAll",
-            "url": "{{BaseURL}}{{Port}}/usuario/findAll",
+            "url": "{{BaseURL}}{{Port}}/usuario/findAll?offset=1&limit=4",
             "method": "GET",
             "sortNum": 20000,
             "created": "2023-07-06T01:36:17.794Z",
-            "modified": "2023-07-09T19:19:07.977Z",
+            "modified": "2023-07-14T13:37:12.505Z",
             "headers": [],
-            "params": [],
+            "params": [
+                {
+                    "name": "offset",
+                    "value": "1",
+                    "isPath": false
+                },
+                {
+                    "name": "limit",
+                    "value": "4",
+                    "isPath": false
+                }
+            ],
             "auth": {
                 "type": "bearer",
                 "bearer": "{{token}}"
@@ -89,11 +100,11 @@
             "colId": "8817f997-95ea-42a6-89b5-d4246ae46f02",
             "containerId": "326f8fb9-6af0-4937-b16b-953e13d54f07",
             "name": "FindByID",
-            "url": "{{BaseURL}}{{Port}}/usuario/findById/64ad78fff26dc6e24ccad27b",
+            "url": "{{BaseURL}}{{Port}}/usuario/findById/64aff26ed7d55dd43fa209fc",
             "method": "GET",
             "sortNum": 30000,
             "created": "2023-07-06T01:36:53.964Z",
-            "modified": "2023-07-11T15:48:16.090Z",
+            "modified": "2023-07-14T12:52:20.845Z",
             "headers": [],
             "params": [],
             "auth": {
@@ -111,12 +122,12 @@
             "method": "POST",
             "sortNum": 40000,
             "created": "2023-07-06T01:42:39.464Z",
-            "modified": "2023-07-12T15:04:10.063Z",
+            "modified": "2023-07-13T13:28:35.836Z",
             "headers": [],
             "params": [],
             "body": {
                 "type": "json",
-                "raw": "{\n  \"nome\": \"laurinda\",\n  \"email\": \"laurinda@email.com\",\n  \"senha\": \"laurinda\",\n  \"imagem\": \"img.laurinda.com.br/laurinda.jpg\"\n\n  \n}",
+                "raw": "{\n  \"nome\": \"Pedro\",\n \n  \"imagem\": \"img.Pedro.com.br/Pedro.jpg\",\n  \"admin\": true\n\n  \n}",
                 "form": []
             },
             "tests": []
@@ -159,17 +170,21 @@
             "colId": "8817f997-95ea-42a6-89b5-d4246ae46f02",
             "containerId": "326f8fb9-6af0-4937-b16b-953e13d54f07",
             "name": "Add Address",
-            "url": "{{BaseURL}}{{Port}}/usuario/addAddress/64aeb26c3a8fa33f972576d8",
+            "url": "{{BaseURL}}{{Port}}/usuario/addAddress/64aff258d7d55dd43fa209fa",
             "method": "POST",
             "sortNum": 70000,
             "created": "2023-07-07T14:19:49.770Z",
-            "modified": "2023-07-12T14:03:24.657Z",
+            "modified": "2023-07-16T21:30:53.655Z",
             "headers": [],
             "params": [],
             "body": {
                 "type": "json",
-                "raw": "{\n  \"rua\": \"rua das andorinha\",\n  \"numero\":14345,\n  \"CEP\":\"11235-918\"\n  \n}",
+                "raw": "[\n  {\n    \"rua\": \"rua das Palmeiras\",\n    \"numero\": 123\n    \n  },\n  {\n    \"rua\": \"rua das marbela\"\n  }\n]",
                 "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "{{token}}"
             },
             "tests": []
         },
@@ -201,7 +216,7 @@
             "method": "POST",
             "sortNum": 90000,
             "created": "2023-07-09T17:11:18.630Z",
-            "modified": "2023-07-12T15:39:56.701Z",
+            "modified": "2023-07-14T13:10:28.975Z",
             "headers": [],
             "params": [],
             "body": {
@@ -224,7 +239,7 @@
             "method": "GET",
             "sortNum": 100000,
             "created": "2023-07-11T01:25:17.419Z",
-            "modified": "2023-07-12T12:43:39.899Z",
+            "modified": "2023-07-14T13:30:46.009Z",
             "headers": [],
             "params": [],
             "auth": {
@@ -260,12 +275,12 @@
             "method": "POST",
             "sortNum": 120000,
             "created": "2023-07-11T01:30:22.473Z",
-            "modified": "2023-07-11T16:10:14.300Z",
+            "modified": "2023-07-13T13:39:20.096Z",
             "headers": [],
             "params": [],
             "body": {
                 "type": "json",
-                "raw": "{\n  \"nome\": \"produto 3\",\n  \"descricao\": \"produto3 enlatado\",\n  \"precoUnitario\": 16.6,\n  \"imagem\": \"img.siteim/produto3.jpg\",\n  \"codigoBarra\": 1234567\n  \n}",
+                "raw": "{\n  \"nome\": \"produto 4\",\n  \"descricao\": \"produto4 enlatado\",\n  \"precoUni\": 16.6,\n  \"imagem\": \"img.siteim/produto4.jpg\",\n  \"codigoBarra\": 123456,\n  \"categorias\": [\n    {\"_id\": \"64ad7fdfdcf42110e3093624\"}\n  ]\n}",
                 "form": []
             },
             "auth": {
@@ -424,12 +439,12 @@
             "method": "POST",
             "sortNum": 200000,
             "created": "2023-07-11T12:36:17.861Z",
-            "modified": "2023-07-11T22:38:49.816Z",
+            "modified": "2023-07-16T21:53:58.461Z",
             "headers": [],
             "params": [],
             "body": {
                 "type": "json",
-                "raw": "{\n  \"_id\":\"64ad7fdfdcf42110e3093624\"\n}",
+                "raw": "{\n  \"_id\":\"64ad7fe6dcf42110e3093627\"\n}",
                 "form": []
             },
             "auth": {
@@ -470,12 +485,12 @@
             "method": "POST",
             "sortNum": 220000,
             "created": "2023-07-11T14:09:20.480Z",
-            "modified": "2023-07-12T13:07:34.030Z",
+            "modified": "2023-07-16T22:35:21.830Z",
             "headers": [],
             "params": [],
             "body": {
                 "type": "json",
-                "raw": "{\n  \"produtos\":[\n    { \"_id\": \"64ad7e8bf26dc6e24ccad293\", \"quantidade\":3},\n    { \"_id\": \"64ad7ea9f26dc6e24ccad296\", \"quantidade\":3}\n    ],\n    \"precoTotal\":400.5,\n    \"frete\": 22.97\n    \n}\n",
+                "raw": "{\n  \"produtos\":[\n    { \"_id\": \"64affe88e47f1be72f9b4e96\", \"quantidade\":9},\n    { \"_id\": \"64ad7ee6f26dc6e24ccad299\", \"quantidade\":10}\n    ],\n    \"precoTotal\":400.5,\n    \"frete\":20\n   \n    \n}\n",
                 "form": []
             },
             "auth": {
@@ -566,11 +581,11 @@
             "colId": "8817f997-95ea-42a6-89b5-d4246ae46f02",
             "containerId": "326f8fb9-6af0-4937-b16b-953e13d54f07",
             "name": "Add Fav Product ",
-            "url": "{{BaseURL}}{{Port}}/usuario/addFavProduct/64aeb26c3a8fa33f972576d8",
+            "url": "{{BaseURL}}{{Port}}/usuario/addFavProduct/64aff258d7d55dd43fa209fa",
             "method": "POST",
             "sortNum": 270000,
             "created": "2023-07-12T13:26:30.320Z",
-            "modified": "2023-07-12T14:07:16.392Z",
+            "modified": "2023-07-16T21:42:55.972Z",
             "headers": [],
             "params": [],
             "body": {
@@ -634,12 +649,12 @@
             "method": "POST",
             "sortNum": 310000,
             "created": "2023-07-12T14:36:48.933Z",
-            "modified": "2023-07-12T14:44:31.168Z",
+            "modified": "2023-07-14T11:53:58.993Z",
             "headers": [],
             "params": [],
             "body": {
                 "type": "json",
-                "raw": "{\n  \"produtos\":[\n    { \"_id\": \"64ad7e8bf26dc6e24ccad293\", \"quantidade\":6},\n    { \"_id\": \"64ad7ea9f26dc6e24ccad296\", \"quantidade\":8}\n    ],\n    \"precoTotal\":1400.5,\n    \"frete\": 122.97,\n    \"concluido\":false\n    \n}\n",
+                "raw": "{\n  \"produtos\":[\n    { \"_id\": \"64ad7e8bf26dc6e24ccad293\", \"quantidade\":6},\n    { \"_id\": \"64ad7ea9f26dc6e24ccad296\", \"quantidade\":8}\n    ],\n    \"precoTotal\":1400.5,\n    \"frete\": 122.97,\n    \"concluido\":true\n   \n    \n}\n",
                 "form": []
             },
             "auth": {

@@ -22,7 +22,7 @@ const validaUsuario = (req, res, next) => {
       .status(400)
       .send({ message: `O campo 'imagem' precisa ser preenchido!` });
   }
-  if (!req.body.admin) {
+  if (!req.body.admin == undefined) {
     return res
       .status(400)
       .send({ message: `O campo 'admin' precisa ser preenchido!` });
@@ -168,7 +168,6 @@ const validaIdParams = (req, res, next) => {
   }
 };
 
-
 const valida_IdBody = (req, res, next) => {
   if (ObjectId.isValid(req.body._id)) {
     return next();
@@ -203,7 +202,6 @@ const validaLogin = (req, res, next) => {
   }
 };
 
-
 const validaProdutosCarrinhoPedido = (req, res, next) => {
   let erros = [];
 
@@ -214,11 +212,9 @@ const validaProdutosCarrinhoPedido = (req, res, next) => {
     if (!value.quantidade) {
       erros.push(`'${key + 1} - quantidade'`);
     }
-    if(!ObjectId.isValid(value._id)){
+    if (!ObjectId.isValid(value._id)) {
       erros.push(`'${key + 1} - _id - tipo invalido'`);
-
     }
-    
   });
 
   if (erros.length == 0) {
@@ -246,5 +242,5 @@ module.exports = {
   validaIdParams,
   valida_IdBody,
   validaLogin,
-  validaProdutosCarrinhoPedido
+  validaProdutosCarrinhoPedido,
 };

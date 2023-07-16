@@ -32,18 +32,33 @@ const validaUsuario = (req, res, next) => {
 };
 
 const validaEndereco = (req, res, next) => {
-  if (!req.body.rua) {
-    return res.status(400).send({ message: "O campo rua deve ser preenchido" });
+  let erros = [];
+
+  req.body.map((value, key) => {
+    if (!value.rua) {
+      erros.push(`'${key + 1} - rua'`);
+    }
+    if (!value.numero) {
+      erros.push(`'${key + 1} - numero'`);
+    }
+    if (!value.CEP) {
+      erros.push(`'${key + 1} - CEP'`);
+    }
+  });
+
+  if (erros.length == 0) {
+    return next();
+  } else {
+    if (erros.length > 1) {
+      return res
+        .status(400)
+        .send({ message: `Os campos ${erros}, devem ser preenchido!` });
+    } else {
+      return res
+        .status(400)
+        .send({ message: `O campo ${erros}, deve ser preenchido!` });
+    }
   }
-  if (!req.body.numero) {
-    return res
-      .status(400)
-      .send({ message: "O campo numero deve ser preenchido" });
-  }
-  if (!req.body.CEP) {
-    return res.status(400).send({ message: "O campo CEP deve ser preenchido" });
-  }
-  return next();
 };
 
 const validaProduto = (req, res, next) => {
@@ -143,8 +158,19 @@ const validaCarrinho = (req, res, next) => {
   }
 };
 
-const validaId = (req, res, next) => {
+const validaIdParams = (req, res, next) => {
   if (ObjectId.isValid(req.params.id)) {
+    return next();
+  } else {
+    return res
+      .status(400)
+      .send({ message: `O ID não corresponde aos padroes necessarios` });
+  }
+};
+
+
+const valida_IdBody = (req, res, next) => {
+  if (ObjectId.isValid(req.body._id)) {
     return next();
   } else {
     return res
@@ -163,7 +189,6 @@ const validaLogin = (req, res, next) => {
     erros.push("senha");
   }
 
-
   if (erros.length == 0) {
     return next();
   } else {
@@ -178,6 +203,39 @@ const validaLogin = (req, res, next) => {
   }
 };
 
+
+const validaProdutosCarrinhoPedido = (req, res, next) => {
+  let erros = [];
+
+  req.body.produtos.map((value, key) => {
+    if (!value._id) {
+      erros.push(`'${key + 1} - _id'`);
+    }
+    if (!value.quantidade) {
+      erros.push(`'${key + 1} - quantidade'`);
+    }
+    if(!ObjectId.isValid(value._id)){
+      erros.push(`'${key + 1} - _id - tipo invalido'`);
+
+    }
+    
+  });
+
+  if (erros.length == 0) {
+    return next();
+  } else {
+    if (erros.length > 1) {
+      return res
+        .status(400)
+        .send({ message: `Os campos ${erros}, devem ser preenchido!` });
+    } else {
+      return res
+        .status(400)
+        .send({ message: `O campo ${erros}, deve ser preenchido!` });
+    }
+  }
+};
+
 module.exports = {
   validaUsuario,
   validaEndereco,
@@ -185,5 +243,8 @@ module.exports = {
   validaPedido,
   validaCategoria,
   validaCarrinho,
-  validaId, validaLogin
+  validaIdParams,
+  valida_IdBody,
+  validaLogin,
+  validaProdutosCarrinhoPedido
 };

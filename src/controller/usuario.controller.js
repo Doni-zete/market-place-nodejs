@@ -28,7 +28,11 @@ const findUserByIdController = async (req, res) => {
 
 const findAllUsersController = async (req, res) => {
   try {
-    return res.status(200).send(await userService.findAllUsersService(req.query.limit, req.query.offset));
+    return res
+      .status(200)
+      .send(
+        await userService.findAllUsersService(req.query.limit, req.query.offset)
+      );
   } catch (err) {
     console.log(`erro: ${err.message}`);
     return res
@@ -39,11 +43,7 @@ const findAllUsersController = async (req, res) => {
 
 const createUserController = async (req, res) => {
   try {
-    const corpo = {
-      ...req.body,
-      createdAt: new Date(),
-    };
-    res.send(await userService.createUserService(corpo));
+    return res.status(201).send(await userService.createUserService(corpo));
   } catch (err) {
     res
       .status(500)

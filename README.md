@@ -27,7 +27,7 @@ Todos os endpoints da nossa aplicação serão listado abaixo
 | 404    | Retorna uma mensagem informando que não encontrou o usuário |
 | 500    | Internal Server Error, alguma coisa deu errado no servidor    |
 
-Trecho do codigo do contoller findByID
+Trecho do codigo do controller findByID
 
 ````
 

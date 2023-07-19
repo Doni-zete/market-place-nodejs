@@ -1,5 +1,8 @@
 # Market-place-nodejs
 
+Codigo desenvolvido em JavaScript
+![NodeJS](https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Node.js_logo.svg/1200px-Node.js_logo.svg.png "NodeJS")
+
 ## Instalação
 
 1. Baixe o codigo
@@ -23,6 +26,8 @@ Todos os endpoints da nossa aplicação serão listado abaixo
 | 401    | Unauthorized, Erro de autenticação, problemas com o token.  |
 | 404    | Retorna uma mensagem informando que não encontrou o usuário |
 | 500    | Internal Server Error, alguma coisa deu errado no servidor    |
+
+Trecho do codigo do contoller findByID
 
 ````
 

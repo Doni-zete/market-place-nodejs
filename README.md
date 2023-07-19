@@ -25,6 +25,8 @@ Todos os endpoints da nossa aplicação serão listado abaixo
 | 500    | Internal Server Error, alguma coisa deu errado no servidor    |
 
 ````
+
+
 const findUserByIdController = async (req, res) => {
   try {
     const user = await userService.findUserByIdService(req.params.id);
@@ -50,7 +52,6 @@ const findUserByIdController = async (req, res) => {
       .send({ message: `Erro inesperado tente novamente!` });
   }
 };
-```JavaScript
 ````
 
 ### Produto

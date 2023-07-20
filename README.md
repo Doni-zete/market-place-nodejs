@@ -12,7 +12,7 @@ Codigo desenvolvido em JavaScript
 
 ## Endpoints
 
-Todos os endpoints da nossa aplicação serão listado abaixo
+Todos os endpoints da aplicação serão listado abaixo
 
 ### Usuario
 
